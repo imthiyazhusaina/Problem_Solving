@@ -25,15 +25,15 @@ class Solution {
         return dfs(x,y,grid,unchecked);
     }
 
-    public int dfs(int x,int y,int[][] grid,int unchecked){
-        if(x<0 || y<0 || x>=grid.length || y>=grid[0].length){
+    public int dfs(int x,int y,int[][] grid,int unchecked) {
+        if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length) {
             return 0;
         }
-        if(grid[x][y] == -1){
+        if (grid[x][y] == -1) {
             return 0;
         }
-        if(grid[x][y]==2){
-            if(unchecked==1){
+        if (grid[x][y] == 2) {
+            if (unchecked == 1) {
                 return 1;
             }
             return 0;
@@ -41,10 +41,10 @@ class Solution {
         int paths = 0;
         int current = grid[x][y];
         grid[x][y] = -1;
-        paths+=dfs(x+1,y,grid,unchecked-1);
-        paths+=dfs(x,y+1,grid,unchecked-1);
-        paths+=dfs(x-1,y,grid,unchecked-1);
-        paths+=dfs(x,y-1,grid,unchecked-1);
+        paths += dfs(x + 1, y, grid, unchecked - 1);
+        paths += dfs(x, y + 1, grid, unchecked - 1);
+        paths += dfs(x - 1, y, grid, unchecked - 1);
+        paths += dfs(x, y - 1, grid, unchecked - 1);
         grid[x][y] = current;
 
         return paths;
