@@ -19,5 +19,10 @@ public class CountDigitsInANumber {
             n/=10;
         }
         System.out.println(count);
+
+        //optimal
+        n = 123455678;
+        int count2 = (int)Math.log10(n)+1;
+        System.out.println(count2);
     }
 }
