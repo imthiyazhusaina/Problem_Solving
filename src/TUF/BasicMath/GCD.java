@@ -1,6 +1,6 @@
 package TUF.BasicMath;
 import java.util.*;
-
+// leetCode 1071
 //    Example 1:
 //    Input: N1 = 9, N2 = 12
 //
@@ -36,13 +36,36 @@ public class GCD {
         }
         return a;
     }
-
+    public static int findGcdBrute(int a,int b){
+        int max = 1;
+        for(int i=2;i<=a && i<=b;i++){
+            if(a%i == 0 && b%i == 0){
+                max = i;
+            }
+        }
+        return max;
+    }
+    public static int recGCD(int a,int b){
+        if(a==0 || b==0){
+            return a+b;
+        }
+        return recGCD((int)(Math.max(a,b)-Math.min(a,b)),(int)Math.min(a,b));
+    }
     public static void main(String[] args) {
-        int n1 = 20, n2 = 15;
+        int n1 = 12, n2 = 6;
 
         // Find the GCD of n1 and n2
         int gcd = findGcd(n1, n2);
 
         System.out.println("GCD of " + n1 + " and " + n2 + " is: " + gcd);
+
+        gcd = findGcdBrute(n1,n2);
+
+        System.out.println("GCD of " + n1 + " and " + n2 + " is: " + gcd);
+
+        gcd = recGCD(n1,n2);
+
+        System.out.println("GCD of " + n1 + " and " + n2 + " is: " + gcd);
+
     }
 }
